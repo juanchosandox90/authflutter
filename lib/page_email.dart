@@ -44,7 +44,7 @@ class _PageEmailAuthState extends State<PageEmailAuth> {
         .createEmailUser(EmailUser(email, verifyCode, password: password))
         .then((value) {
       setState(() {
-        _log = 'createEmailUser = ${value.user.uid} , ${value.user.providerId}';
+        _log = 'Create Email lUser = ${value.user.uid} , ${value.user.providerId}';
       });
     }).catchError((error) => print(error));
   }
@@ -62,7 +62,7 @@ class _PageEmailAuthState extends State<PageEmailAuth> {
     AGCAuth.instance.signIn(credential).then((value) {
       setState(() {
         _log =
-        'signInWithPassword = ${value.user.uid} , ${value.user.providerId}';
+        'Sign In With Password = ${value.user.uid} , ${value.user.providerId}';
       });
     });
   }
@@ -82,7 +82,7 @@ class _PageEmailAuthState extends State<PageEmailAuth> {
     AGCAuth.instance.signIn(credential).then((value) {
       setState(() {
         _log =
-        'signInWithVerifyCode = ${value.user.uid} , ${value.user.providerId}';
+        'Sign In With VerifyCode = ${value.user.uid} , ${value.user.providerId}';
       });
     });
   }
@@ -98,13 +98,13 @@ class _PageEmailAuthState extends State<PageEmailAuth> {
     String password = _passwordController.text;
     AGCAuth.instance
         .resetPasswordWithEmail(email, password, verifyCode)
-        .then((value) => print('resetEmailPassword'));
+        .then((value) => print('Reset Email Password'));
   }
 
   _signOut() {
     AGCAuth.instance.signOut().then((value) {
       setState(() {
-        _log = 'signOut';
+        _log = 'Sign Out';
       });
     }).catchError((error) => print(error));
   }
@@ -112,7 +112,7 @@ class _PageEmailAuthState extends State<PageEmailAuth> {
   _deleteUser() {
     AGCAuth.instance.deleteUser().then((value) {
       setState(() {
-        _log = 'deleteUser';
+        _log = 'Delete User';
       });
     }).catchError((error) => print(error));
   }
@@ -173,7 +173,7 @@ class _PageEmailAuthState extends State<PageEmailAuth> {
     await user.updateEmail(email, verifyCode).catchError((error) {
       print(error);
     });
-    print('updateEmail');
+    print('Update Email');
   }
 
   _updatePassword() async {
@@ -192,7 +192,7 @@ class _PageEmailAuthState extends State<PageEmailAuth> {
     await user.updatePassword(password, verifyCode, AuthProviderType.email).catchError((error){
       print(error);
     });
-    print('updatePassword');
+    print('Update Password');
   }
 
   Future<bool> _showEmailDialog(VerifyCodeAction action) {
@@ -269,24 +269,24 @@ class _PageEmailAuthState extends State<PageEmailAuth> {
             children: <Widget>[
               Text(_log),
               CupertinoButton(
-                  child: Text('getCurrentUser'), onPressed: _getCurrentUser),
+                  child: Text('Get Current User'), onPressed: _getCurrentUser),
               CupertinoButton(
-                  child: Text('createEmailUser'), onPressed: _createEmailUser),
+                  child: Text('Create Email User'), onPressed: _createEmailUser),
               CupertinoButton(
-                  child: Text('signInWithPassword'),
+                  child: Text('Sign In With Password'),
                   onPressed: _signInWithPassword),
               CupertinoButton(
-                  child: Text('signInWithVerifyCode'),
+                  child: Text('Sign In With Verify Code'),
                   onPressed: _signInWithVerifyCode),
               CupertinoButton(
-                  child: Text('resetEmailPassword'),
+                  child: Text('Reset Email Password'),
                   onPressed: _resetEmailPassword),
-              CupertinoButton(child: Text('signOut'), onPressed: _signOut),
-              CupertinoButton(child: Text('deleteUser'), onPressed: _deleteUser),
-              CupertinoButton(child: Text('link email'), onPressed: _link),
-              CupertinoButton(child: Text('unlink email'), onPressed: _unlink),
-              CupertinoButton(child: Text('updateEmail'), onPressed: _updateEmail),
-              CupertinoButton(child: Text('updatePassword'), onPressed: _updatePassword),
+              CupertinoButton(child: Text('Sign Out'), onPressed: _signOut),
+              CupertinoButton(child: Text('Delete User'), onPressed: _deleteUser),
+              CupertinoButton(child: Text('Link Email'), onPressed: _link),
+              CupertinoButton(child: Text('Unlink Email'), onPressed: _unlink),
+              CupertinoButton(child: Text('Update Email'), onPressed: _updateEmail),
+              CupertinoButton(child: Text('Update Password'), onPressed: _updatePassword),
             ],
           )),
     );

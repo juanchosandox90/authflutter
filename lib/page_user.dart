@@ -47,7 +47,7 @@ class _PageUserState extends State<PageUser> {
     await user.updateProfile(request).catchError((error){
       print(error);
     });
-    print('updateProfile');
+    print('Update Profile');
   }
 
 
@@ -57,7 +57,7 @@ class _PageUserState extends State<PageUser> {
       print(error);
     });
     setState(() {
-      _log = 'getUserExtra ${userExtra.createTime}, ${userExtra.lastSignInTime}';
+      _log = 'Get User Extra ${userExtra.createTime}, ${userExtra.lastSignInTime}';
     });
   }
 
@@ -67,7 +67,7 @@ class _PageUserState extends State<PageUser> {
     });
     TokenResult res = await user?.getToken();
     setState(() {
-      _log = 'getToken ${res?.token} ';
+      _log = 'Get Token ${res?.token} ';
     });
   }
 
@@ -112,10 +112,10 @@ class _PageUserState extends State<PageUser> {
       body: Center(
           child: ListView(children: <Widget>[
             Text(_log),
-            CupertinoButton(child: Text('getCurrentUser'), onPressed: _getCurrentUser),
-            CupertinoButton(child: Text('updateProfile'), onPressed: _updateProfile),
-            CupertinoButton(child: Text('getUserExtra'), onPressed: _getUserExtra),
-            CupertinoButton(child: Text('getToken'), onPressed: _getToken),
+            CupertinoButton(child: Text('Get Current User'), onPressed: _getCurrentUser),
+            CupertinoButton(child: Text('Update Profile'), onPressed: _updateProfile),
+            CupertinoButton(child: Text('Get User Extra'), onPressed: _getUserExtra),
+            CupertinoButton(child: Text('Get Token'), onPressed: _getToken),
           ],)
       ),
     );
